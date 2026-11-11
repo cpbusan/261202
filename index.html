@@ -25,7 +25,6 @@ a{color:inherit}
 .hero{position:relative;overflow:hidden;color:#fff;padding:56px 0 44px;background:
   radial-gradient(900px 420px at 85% -10%,rgba(111,195,255,.55),transparent 60%),
   linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#1d4aa8 100%)}
-.hero::before{content:'UP';position:absolute;left:-18px;bottom:-70px;font-size:300px;font-weight:900;letter-spacing:-12px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.12);pointer-events:none}
 .hero .wrap{position:relative}
 .badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 14px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:18px}
 .hero h1{font-size:clamp(28px,7vw,44px);line-height:1.28;font-weight:800;letter-spacing:-.02em}
@@ -90,8 +89,9 @@ h2 + .lead{color:var(--muted);margin-bottom:22px;font-size:15px}
 .panel{display:none}.panel.on{display:block}
 label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
 label i{color:var(--err);font-style:normal}
-input[type=text],input[type=tel]{width:100%;padding:13px 14px;font:inherit;border:1.5px solid var(--line);border-radius:12px;background:#fff}
-input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,232,.15)}
+input[type=text],input[type=tel],textarea{width:100%;padding:13px 14px;font:inherit;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+textarea{resize:vertical}
+input:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,232,.15)}
 .agree{margin:18px 0 16px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .agree label{display:flex;gap:8px;align-items:flex-start;margin:0;font-size:14px;color:var(--ink)}
 .agree input{margin-top:5px;width:18px;height:18px;flex:none}
@@ -124,7 +124,7 @@ footer b{color:#fff}
 .float .btn{width:100%;max-width:560px;display:block;margin:0 auto;background:var(--blue);color:#fff}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:30}
 .toast.on{opacity:1}
-@media(max-width:480px){.tl li{grid-template-columns:1fr;gap:2px}.hero::before{font-size:220px}.org{grid-template-columns:1fr;gap:2px}}
+@media(max-width:480px){.tl li{grid-template-columns:1fr;gap:2px}.org{grid-template-columns:1fr;gap:2px}}
 </style>
 </head>
 <body>
@@ -136,7 +136,7 @@ footer b{color:#fff}
     <p class="sub">장애인 특성에 맞는 통합돌봄 도입 방안</p>
     <p class="date">2026.12.02.(수) 10:00</p>
     <div class="dday">
-      <div class="big"><small>행사까지</small><span id="ddayText">D-?</span></div>
+      <div class="big"><small>접수 마감까지</small><span id="ddayText">D-?</span></div>
       <div class="cd" id="cd">
         <div><b id="cdD">0</b><span>일</span></div>
         <div><b id="cdH">0</b><span>시간</span></div>
@@ -232,12 +232,14 @@ footer b{color:#fff}
         <input type="text" id="aName" maxlength="20" autocomplete="name" placeholder="홍길동">
         <label for="aPhone">연락처 <i>*</i></label>
         <input type="tel" id="aPhone" inputmode="numeric" maxlength="13" autocomplete="tel" placeholder="010-0000-0000">
-        <label for="aOrg">소속 기관 <i>*</i></label>
-        <input type="text" id="aOrg" maxlength="40" placeholder="예) 부산뇌병변복지관">
-        <label for="aPos">직책 <i>*</i></label>
-        <input type="text" id="aPos" maxlength="30" placeholder="예) 사회복지사">
+        <label for="aOrg">소속 기관 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <input type="text" id="aOrg" maxlength="40">
+        <label for="aPos">직책 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <input type="text" id="aPos" maxlength="30">
+        <label for="aSupport">편의 지원 요청사항 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <textarea id="aSupport" maxlength="100" rows="2" placeholder="예) 수어통역"></textarea>
         <div class="agree">
-          입력하신 정보(이름·연락처·소속·직책)는 <b>행사 참석 확인 및 안내 목적으로만</b> 사용되며, 행사 종료 후 파기됩니다.
+          입력하신 정보(이름·연락처·소속·직책·편의 지원 요청사항)는 <b>행사 참석 확인 및 안내 목적으로만</b> 사용되며, 행사 종료 후 파기됩니다.
           <label><input type="checkbox" id="aAgree"> 개인정보 수집·이용에 동의합니다.</label>
         </div>
         <button class="btn blue" id="aSubmit" type="submit">신청하기</button>
@@ -312,12 +314,12 @@ if (CONFIG.VENUE) {
 /* ===== D-day / 카운트다운 ===== */
 function tick() {
   const now = Date.now();
-  const diff = T(CONFIG.EVENT_START) - now;
+  const diff = T(CONFIG.APPLY_END) - now;
   const k = new Date(now + 9 * 3600e3);
   const today = Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate());
-  const evDay = Date.UTC(2026, 11, 2);
+  const evDay = Date.UTC(2026, 10, 25); // 접수 마감일(11/25)
   const dd = Math.round((evDay - today) / 864e5);
-  $('#ddayText').textContent = dd > 0 ? 'D-' + dd : dd === 0 ? 'D-DAY' : 'D+' + Math.abs(dd);
+  $('#ddayText').textContent = diff <= 0 ? '마감' : dd > 0 ? 'D-' + dd : 'D-DAY';
   if (diff <= 0) { ['D','H','M','S'].forEach(x => $('#cd'+x).textContent = '0'); return; }
   $('#cdD').textContent = Math.floor(diff / 864e5);
   $('#cdH').textContent = Math.floor(diff % 864e5 / 36e5);
@@ -337,7 +339,7 @@ function renderStatus() {
   const st = periodState();
   const box = $('#statusBox');
   box.className = 'status ' + st;
-  box.textContent = st === 'open' ? '✅ 지금 신청할 수 있어요 (정원 제한 없음)'
+  box.textContent = st === 'open' ? '✅ 지금 신청할 수 있어요'
     : st === 'before' ? '⏳ 신청은 11월 11일부터 시작됩니다' : '🔒 신청이 마감되었습니다';
   const btn = $('#aSubmit');
   btn.disabled = st !== 'open';
@@ -395,8 +397,8 @@ function toast(t) {
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
   const msg = $('#aMsg'); msg.textContent = '';
-  const data = { action: 'apply', name: $('#aName').value.trim(), phone: $('#aPhone').value, org: $('#aOrg').value.trim(), position: $('#aPos').value.trim() };
-  if (!data.name || !data.org || !data.position) { msg.textContent = '이름, 소속 기관, 직책을 모두 입력해 주세요.'; return; }
+  const data = { action: 'apply', name: $('#aName').value.trim(), phone: $('#aPhone').value, org: $('#aOrg').value.trim(), position: $('#aPos').value.trim(), support: $('#aSupport').value.trim() };
+  if (!data.name) { msg.textContent = '이름을 입력해 주세요.'; return; }
   if (!/^0\d{8,10}$/.test(data.phone.replace(/\D/g, ''))) { msg.textContent = '연락처를 정확히 입력해 주세요.'; return; }
   if (!$('#aAgree').checked) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; return; }
   const btn = $('#aSubmit'); btn.disabled = true; btn.textContent = '신청 중...';
@@ -406,7 +408,7 @@ $('#applyForm').addEventListener('submit', async e => {
   const box = $('#aResult'); box.innerHTML = ''; box.hidden = false;
   const card = el('div', 'result');
   card.append(el('h3', '', '✅ 신청이 완료되었습니다'),
-    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['신청일시', r.at]]));
+    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['편의 지원', r.support], ['신청일시', r.at]].filter(x => x[1])));
   box.append(card);
   $('#applyForm').hidden = true;
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -428,7 +430,9 @@ async function doLookup(name, phone) {
     const top = el('div', 'top');
     top.append(el('span', 'no', it.name), el('span', 'pill ' + (it.status === '신청' ? 'ok' : 'x'), it.status === '신청' ? '신청 완료' : '취소됨'));
     card.append(top);
-    card.append(el('p', '', it.org + ' · ' + it.position));
+    const op = [it.org, it.position].filter(Boolean).join(' · ');
+    if (op) card.append(el('p', '', op));
+    if (it.support) card.append(el('p', '', '편의 지원 요청: ' + it.support));
     card.append(el('p', '', '신청일시 ' + it.at + (it.cancelAt ? ' / 취소일시 ' + it.cancelAt : '')));
     if (it.status === '신청' && r.canCancel) {
       const b = el('button', 'btn small danger', '신청 취소');
