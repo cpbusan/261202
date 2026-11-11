@@ -121,7 +121,9 @@ input:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3
 .org:last-child{border:0}
 .org b{color:var(--blue)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{background:#e9f0fc;color:var(--navy);padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600}
+.chips a{text-decoration:none}
+.chips a:hover{background:#d5e3fa}
+.chips span,.chips a{background:#e9f0fc;color:var(--navy);padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600}
 
 footer{background:var(--navy);color:rgba(255,255,255,.8);padding:30px 0 90px;font-size:13px;text-align:center}
 footer b{color:#fff}
@@ -280,10 +282,7 @@ footer b{color:#fff}
     <div class="card">
       <div class="org"><b>주최</b><span>부산뇌병변복지관 컨소시엄사업</span></div>
       <div class="org"><b>공동주최</b><span>부산광역시사회서비스원</span></div>
-      <div class="org"><b>컨소시엄<br>참여기관</b><div class="chips">
-        <span>부산뇌병변복지관</span><span>동구장애인복지관</span><span>영도구장애인복지관</span><span>해운대구장애인복지관</span>
-        <span>부산지역장애인보건의료센터</span><span>부산지역자활센터협회</span><span>부산광역시정신건강복지센터</span><span>부산광역시자원봉사센터</span>
-      </div></div>
+      <div class="org"><b>컨소시엄<br>참여기관</b><div class="chips" id="orgChips"></div></div>
     </div>
   </div>
 </section>
@@ -312,6 +311,24 @@ const CONFIG = {
 
 const $ = s => document.querySelector(s);
 const T = s => new Date(s).getTime();
+
+/* ===== 컨소시엄 참여기관 칩 (url에 홈페이지 주소를 넣으면 새 탭 링크가 됩니다. 비워두면 링크 없이 표시) ===== */
+const ORGS = [
+  { name: '부산뇌병변복지관', url: 'http://busancp.or.kr/' },
+  { name: '동구장애인복지관', url: 'http://www.dgwc.or.kr/' },
+  { name: '영도구장애인복지관', url: 'https://www.yeongdorc.or.kr/' },
+  { name: '해운대구장애인복지관', url: 'http://togetherhaeundae.or.kr/' },
+  { name: '부산광역시지역장애인보건의료센터', url: 'https://www.brhmc.or.kr/HomeMain.do' },
+  { name: '부산지역자활센터협회', url: 'http://www.bsjahwal.or.kr/main.php' },
+  { name: '부산광역정신건강복지센터', url: 'https://www.busaninmaum.com/' },
+  { name: '부산광역시자원봉사센터', url: 'https://www.busan1365.kr/' }
+];
+ORGS.forEach(o => {
+  let c;
+  if (o.url) { c = document.createElement('a'); c.href = o.url; c.target = '_blank'; c.rel = 'noopener'; c.textContent = o.name; }
+  else { c = document.createElement('span'); c.textContent = o.name; }
+  document.getElementById('orgChips').append(c);
+});
 
 /* ===== 장소 표시 ===== */
 if (CONFIG.VENUE) {
