@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회</title>
+<meta name="description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 11/11~11/25">
+<meta property="og:title" content="부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회">
+<meta property="og:description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 11/11~11/25">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --navy:#0d2150; --navy2:#162f6b; --blue:#1d6fe8; --sky:#6fc3ff; --orange:#ffb04a;
+  --ink:#16223f; --muted:#5d6a86; --line:#dfe6f3; --bg:#f4f7fc; --white:#fff;
+  --ok:#1a9b6c; --err:#d6453d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;color:#fff;padding:56px 0 44px;background:
+  radial-gradient(900px 420px at 85% -10%,rgba(111,195,255,.55),transparent 60%),
+  linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#1d4aa8 100%)}
+.hero::before{content:'UP';position:absolute;left:-18px;bottom:-70px;font-size:300px;font-weight:900;letter-spacing:-12px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.12);pointer-events:none}
+.hero .wrap{position:relative}
+.badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 14px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(28px,7vw,44px);line-height:1.28;font-weight:800;letter-spacing:-.02em}
+.hero .sub{margin-top:12px;font-size:clamp(16px,4vw,20px);color:var(--orange);font-weight:600}
+.date{margin-top:26px;font-size:clamp(20px,5.2vw,28px);font-weight:700;letter-spacing:.08em}
+.dday{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;align-items:stretch}
+.dday .big{background:#fff;color:var(--navy);border-radius:16px;padding:10px 20px;font-size:34px;font-weight:900;line-height:1.2}
+.dday .big small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.05em}
+.cd{display:flex;gap:8px}
+.cd div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;min-width:58px;padding:8px 6px;text-align:center}
+.cd b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.cd span{font-size:11px;opacity:.8}
+.cta{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:700;border-radius:14px;padding:14px 22px;font-size:16px;text-decoration:none;display:inline-block;text-align:center;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--orange);color:#3a2300}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn.blue{background:var(--blue);color:#fff;width:100%}
+.btn.blue:disabled{background:#9db2d6;cursor:not-allowed}
+.btn.small{padding:9px 14px;font-size:14px;border-radius:10px}
+.btn.danger{background:#fff;color:var(--err);border:1px solid var(--err)}
+
+/* SECTIONS */
+section{padding:44px 0}
+h2{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.01em}
+h2 + .lead{color:var(--muted);margin-bottom:22px;font-size:15px}
+.cards{display:grid;gap:12px;margin-top:-30px;position:relative;z-index:2}
+.card{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 6px 22px rgba(13,33,80,.09);border:1px solid var(--line)}
+.info{display:grid;grid-template-columns:84px 1fr;gap:6px 12px;align-items:baseline}
+.info dt{color:var(--blue);font-weight:700;font-size:14px}
+.info dd{font-weight:600}
+.status{margin-top:14px;padding:10px 14px;border-radius:12px;font-weight:700;font-size:14px}
+.status.open{background:#e6f6ef;color:var(--ok)}
+.status.before{background:#fff4e0;color:#a86400}
+.status.closed{background:#fdeceb;color:var(--err)}
+
+/* PROGRAM */
+.tl{list-style:none;position:relative;margin-left:4px}
+.tl li{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .t{font-weight:800;color:var(--blue);font-size:14px;font-variant-numeric:tabular-nums}
+.tl .t em{display:block;font-style:normal;color:#fff;background:var(--navy);border-radius:6px;padding:0 8px;font-size:12px;width:max-content;margin-bottom:3px}
+.tl h3{font-size:16px;font-weight:700;color:var(--navy)}
+.tl ul{list-style:none;margin-top:6px;font-size:14px;color:var(--muted)}
+.tl ul li{display:block;padding:3px 0;border:0}
+.tl ul li b{color:var(--ink);font-weight:600}
+.tl ul.sub li{padding-left:12px;position:relative}
+.tl ul.sub li::before{content:'·';position:absolute;left:2px}
+
+/* FORM */
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#e5ecf8;border-radius:14px;padding:4px;margin-bottom:18px}
+.tabs button{appearance:none;border:0;background:transparent;font:inherit;font-weight:700;padding:11px;border-radius:11px;color:var(--muted);cursor:pointer}
+.tabs button.on{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(13,33,80,.12)}
+.panel{display:none}.panel.on{display:block}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+label i{color:var(--err);font-style:normal}
+input[type=text],input[type=tel]{width:100%;padding:13px 14px;font:inherit;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,232,.15)}
+.agree{margin:18px 0 16px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.agree label{display:flex;gap:8px;align-items:flex-start;margin:0;font-size:14px;color:var(--ink)}
+.agree input{margin-top:5px;width:18px;height:18px;flex:none}
+.msg{margin-top:12px;font-size:14px;font-weight:600;min-height:20px}
+.msg.err{color:var(--err)}
+.result{background:#fff;border:2px solid var(--ok);border-radius:18px;padding:22px;text-align:center}
+.result .no{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:.04em}
+.result h3{color:var(--ok);margin-bottom:6px}
+.result dl{margin:14px 0;text-align:left;display:grid;grid-template-columns:80px 1fr;gap:4px 10px;font-size:15px}
+.result dt{color:var(--muted)}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
+.item .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.item .no{font-weight:800;color:var(--navy)}
+.pill{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pill.ok{background:#e6f6ef;color:var(--ok)}.pill.x{background:#eee;color:#777}
+.item p{font-size:14px;color:var(--muted)}
+.item .btn{margin-top:10px}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* ORGS */
+.org{display:grid;grid-template-columns:90px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.org:last-child{border:0}
+.org b{color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:#e9f0fc;color:var(--navy);padding:4px 10px;border-radius:99px;font-size:13px;font-weight:600}
+
+footer{background:var(--navy);color:rgba(255,255,255,.8);padding:30px 0 90px;font-size:13px;text-align:center}
+footer b{color:#fff}
+.float{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);z-index:20;display:none}
+.float .btn{width:100%;max-width:560px;display:block;margin:0 auto;background:var(--blue);color:#fff}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:30}
+.toast.on{opacity:1}
+@media(max-width:480px){.tl li{grid-template-columns:1fr;gap:2px}.hero::before{font-size:220px}.org{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">고령장애인통합돌봄 컨소시엄사업</span>
+    <h1>부산형 고령장애인통합돌봄모델<br>정책 제안을 위한 성과보고회</h1>
+    <p class="sub">장애인 특성에 맞는 통합돌봄 도입 방안</p>
+    <p class="date">2026.12.02.(수) 10:00</p>
+    <div class="dday">
+      <div class="big"><small>행사까지</small><span id="ddayText">D-?</span></div>
+      <div class="cd" id="cd">
+        <div><b id="cdD">0</b><span>일</span></div>
+        <div><b id="cdH">0</b><span>시간</span></div>
+        <div><b id="cdM">0</b><span>분</span></div>
+        <div><b id="cdS">0</b><span>초</span></div>
+      </div>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#apply">참가 신청하기</a>
+      <button class="btn ghost" id="btnIcs" type="button">📅 캘린더에 담기</button>
+      <button class="btn ghost" id="btnShare" type="button">🔗 공유하기</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cards">
+    <div class="card">
+      <dl class="info">
+        <dt>신청기간</dt><dd>2026년 11월 11일(수) ~ 11월 25일(수)</dd>
+        <dt>개최날짜</dt><dd>2026년 12월 02일(수) 오전 10:00 ~ 12:00</dd>
+        <dt id="venueDt" hidden>장소</dt><dd id="venueDd" hidden></dd>
+        <dt>문의전화</dt><dd><a href="tel:0513333888">051-333-3888</a> 부산뇌병변복지관</dd>
+      </dl>
+      <div class="status" id="statusBox"></div>
+    </div>
+  </div>
+</div>
+
+<section id="program">
+  <div class="wrap">
+    <h2>프로그램</h2>
+    <p class="lead">고령장애인통합돌봄에 관심 있는 분들을 모십니다.</p>
+    <ol class="tl">
+      <li><div class="t">09:30–10:00</div><div><h3>접수</h3></div></li>
+      <li><div class="t">10:00–10:10</div><div><h3>개회 및 참석자 소개</h3></div></li>
+      <li><div class="t">10:10–10:15</div><div>
+        <h3>사업기관 대표 인사</h3>
+        <ul><li><b>이주은 관장</b> (부산뇌병변복지관)</li><li>컨소시엄 기관 소개 · 축사</li></ul></div></li>
+      <li><div class="t"><em>1부</em>10:15–11:10</div><div>
+        <h3>고령장애인통합돌봄 컨소시엄 성과보고</h3>
+        <ul>
+          <li>1. 부산형 고령장애인 통합돌봄 종합 성과보고 / <b>강은주 사무국장</b> (부산뇌병변복지관)</li>
+          <li>2. 고령장애인 통합돌봄 권역별 특성화 모델 사례</li>
+        </ul>
+        <ul class="sub">
+          <li>고령 뇌병변장애인 통합돌봄 사례 / <b>이동은 과장</b> (부산뇌병변복지관)</li>
+          <li>8050세대 고령장애인 통합돌봄 사례 / <b>박선애 팀장</b> (동구장애인복지관)</li>
+          <li>삼중고세대 고령장애인 통합돌봄 사례 / <b>장한나 사회복지사</b> (영도구장애인복지관)</li>
+          <li>무연고·독거 고령장애인 통합돌봄 사례 / <b>윤초롱 팀장</b> (해운대장애인복지관)</li>
+          <li>고령장애인 통합돌봄 의료영역 사례 / <b>박민정 간호사</b> (부산지역장애인보건의료센터)</li>
+        </ul></div></li>
+      <li><div class="t"><em>2부</em>11:10–11:40</div><div>
+        <h3>부산시의 고령장애인통합돌봄 정책 방향성 제시</h3>
+        <ul>
+          <li>1. 고령장애인 특화서비스 제안 및 부산형 통합돌봄 모델 / <b>윤성호 원장</b> (행림복지연구원)</li>
+          <li>2. 부산시 고령장애인 통합돌봄 정책 방향 / <b>손가연 사회복지보좌관</b> (부산광역시)</li>
+          <li>3. 부산 고령장애인 통합돌봄 정책 제안 / <b>손지현 원장</b> (부산광역시사회서비스원)</li>
+        </ul></div></li>
+      <li><div class="t">11:40–12:00</div><div><h3>질의 응답 및 마무리</h3></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="apply" style="background:#fff">
+  <div class="wrap">
+    <h2>참가 신청</h2>
+    <p class="lead">신청 기간: 11월 11일(수) ~ 11월 25일(수)</p>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="on" data-tab="pApply">참가 신청</button>
+      <button type="button" data-tab="pLookup">신청 조회·취소</button>
+    </div>
+
+    <!-- 신청 -->
+    <div class="panel on" id="pApply">
+      <form id="applyForm" novalidate>
+        <label for="aName">이름 <i>*</i></label>
+        <input type="text" id="aName" maxlength="20" autocomplete="name" placeholder="홍길동">
+        <label for="aPhone">연락처 <i>*</i></label>
+        <input type="tel" id="aPhone" inputmode="numeric" maxlength="13" autocomplete="tel" placeholder="010-0000-0000">
+        <label for="aOrg">소속 기관 <i>*</i></label>
+        <input type="text" id="aOrg" maxlength="40" placeholder="예) 부산뇌병변복지관">
+        <label for="aPos">직책 <i>*</i></label>
+        <input type="text" id="aPos" maxlength="30" placeholder="예) 사회복지사">
+        <div class="agree">
+          입력하신 정보(이름·연락처·소속·직책)는 <b>행사 참석 확인 및 안내 목적으로만</b> 사용되며, 행사 종료 후 파기됩니다.
+          <label><input type="checkbox" id="aAgree"> 개인정보 수집·이용에 동의합니다.</label>
+        </div>
+        <button class="btn blue" id="aSubmit" type="submit">신청하기</button>
+        <div class="msg err" id="aMsg"></div>
+      </form>
+      <div id="aResult" hidden></div>
+    </div>
+
+    <!-- 조회/취소 -->
+    <div class="panel" id="pLookup">
+      <form id="lookupForm" novalidate>
+        <label for="lName">이름</label>
+        <input type="text" id="lName" maxlength="20" placeholder="신청 시 입력한 이름">
+        <label for="lPhone">연락처</label>
+        <input type="tel" id="lPhone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000">
+        <div style="height:16px"></div>
+        <button class="btn blue" id="lSubmit" type="submit">조회하기</button>
+        <div class="msg err" id="lMsg"></div>
+      </form>
+      <div id="lList"></div>
+      <p class="note">※ 취소는 행사 시작 전까지 가능합니다. 변경이 필요하면 취소 후 다시 신청해 주세요.</p>
+    </div>
+  </div>
+</section>
+
+<section id="orgs">
+  <div class="wrap">
+    <h2>주최 · 참여기관</h2>
+    <p class="lead">&nbsp;</p>
+    <div class="card">
+      <div class="org"><b>주최</b><span>부산뇌병변복지관 컨소시엄사업</span></div>
+      <div class="org"><b>공동주최</b><span>부산광역시사회서비스원</span></div>
+      <div class="org"><b>컨소시엄<br>참여기관</b><div class="chips">
+        <span>부산뇌병변복지관</span><span>동구장애인복지관</span><span>영도구장애인복지관</span><span>해운대구장애인복지관</span>
+        <span>부산지역장애인보건의료센터</span><span>부산지역자활센터협회</span><span>부산광역시정신건강복지센터</span><span>부산광역시자원봉사센터</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>부산뇌병변복지관</b> · 문의 <a href="tel:0513333888">051-333-3888</a></p>
+    <p style="margin-top:6px">주최: 부산뇌병변복지관 컨소시엄사업 · 공동주최: 부산광역시사회서비스원</p>
+  </div>
+</footer>
+
+<div class="float" id="floatCta"><a class="btn" href="#apply">참가 신청하기</a></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== 설정 (여기만 수정) ===== */
+const CONFIG = {
+  // Apps Script 웹앱 배포 URL을 아래 따옴표 안에 붙여넣으세요 (…/exec 로 끝나는 주소)
+  GAS_URL: '',
+  APPLY_START: '2026-11-11T00:00:00+09:00',
+  APPLY_END: '2026-11-25T23:59:59+09:00',
+  EVENT_START: '2026-12-02T10:00:00+09:00',
+  EVENT_END: '2026-12-02T12:00:00+09:00',
+  VENUE: '' // 장소가 정해지면 입력 (예: '부산시민회관 대극장'). 비워두면 표시 안 됨
+};
+
+const $ = s => document.querySelector(s);
+const T = s => new Date(s).getTime();
+
+/* ===== 장소 표시 ===== */
+if (CONFIG.VENUE) {
+  $('#venueDt').hidden = false; $('#venueDd').hidden = false;
+  $('#venueDd').textContent = CONFIG.VENUE;
+}
+
+/* ===== D-day / 카운트다운 ===== */
+function tick() {
+  const now = Date.now();
+  const diff = T(CONFIG.EVENT_START) - now;
+  const k = new Date(now + 9 * 3600e3);
+  const today = Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate());
+  const evDay = Date.UTC(2026, 11, 2);
+  const dd = Math.round((evDay - today) / 864e5);
+  $('#ddayText').textContent = dd > 0 ? 'D-' + dd : dd === 0 ? 'D-DAY' : 'D+' + Math.abs(dd);
+  if (diff <= 0) { ['D','H','M','S'].forEach(x => $('#cd'+x).textContent = '0'); return; }
+  $('#cdD').textContent = Math.floor(diff / 864e5);
+  $('#cdH').textContent = Math.floor(diff % 864e5 / 36e5);
+  $('#cdM').textContent = Math.floor(diff % 36e5 / 6e4);
+  $('#cdS').textContent = Math.floor(diff % 6e4 / 1e3);
+}
+tick(); setInterval(tick, 1000);
+
+/* ===== 신청 기간 상태 ===== */
+function periodState() {
+  const n = Date.now();
+  if (n < T(CONFIG.APPLY_START)) return 'before';
+  if (n > T(CONFIG.APPLY_END)) return 'closed';
+  return 'open';
+}
+function renderStatus() {
+  const st = periodState();
+  const box = $('#statusBox');
+  box.className = 'status ' + st;
+  box.textContent = st === 'open' ? '✅ 지금 신청할 수 있어요 (정원 제한 없음)'
+    : st === 'before' ? '⏳ 신청은 11월 11일부터 시작됩니다' : '🔒 신청이 마감되었습니다';
+  const btn = $('#aSubmit');
+  btn.disabled = st !== 'open';
+  btn.textContent = st === 'open' ? '신청하기' : st === 'before' ? '신청 기간이 아닙니다' : '신청이 마감되었습니다';
+}
+renderStatus(); setInterval(renderStatus, 30000);
+
+/* ===== 탭 ===== */
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === b.dataset.tab));
+}));
+
+/* ===== 연락처 자동 하이픈 ===== */
+function fmtPhone(v) {
+  const d = v.replace(/\D/g, '').slice(0, 11);
+  if (d.length < 4) return d;
+  if (d.length < 8) return d.replace(/(\d{3})(\d+)/, '$1-$2');
+  if (d.length < 11) return d.replace(/(\d{3})(\d{3,4})(\d+)/, '$1-$2-$3');
+  return d.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+}
+['#aPhone', '#lPhone'].forEach(s => $(s).addEventListener('input', e => e.target.value = fmtPhone(e.target.value)));
+
+/* ===== API ===== */
+async function api(payload) {
+  if (!CONFIG.GAS_URL) return { ok: false, message: '서버 주소(GAS_URL)가 아직 설정되지 않았습니다.' };
+  try {
+    const res = await fetch(CONFIG.GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // preflight 방지
+      body: JSON.stringify(payload)
+    });
+    return await res.json();
+  } catch (e) {
+    return { ok: false, message: '네트워크 오류입니다. 잠시 후 다시 시도해 주세요.' };
+  }
+}
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+function dl(pairs) {
+  const d = el('dl');
+  pairs.forEach(([k, v]) => { d.append(el('dt', '', k), el('dd', '', v)); });
+  return d;
+}
+function toast(t) {
+  const x = $('#toast'); x.textContent = t; x.classList.add('on');
+  setTimeout(() => x.classList.remove('on'), 2200);
+}
+
+/* ===== 신청 ===== */
+$('#applyForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const msg = $('#aMsg'); msg.textContent = '';
+  const data = { action: 'apply', name: $('#aName').value.trim(), phone: $('#aPhone').value, org: $('#aOrg').value.trim(), position: $('#aPos').value.trim() };
+  if (!data.name || !data.org || !data.position) { msg.textContent = '이름, 소속 기관, 직책을 모두 입력해 주세요.'; return; }
+  if (!/^0\d{8,10}$/.test(data.phone.replace(/\D/g, ''))) { msg.textContent = '연락처를 정확히 입력해 주세요.'; return; }
+  if (!$('#aAgree').checked) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; return; }
+  const btn = $('#aSubmit'); btn.disabled = true; btn.textContent = '신청 중...';
+  const r = await api(data);
+  renderStatus();
+  if (!r.ok) { msg.textContent = r.message || '신청에 실패했습니다.'; return; }
+  const box = $('#aResult'); box.innerHTML = ''; box.hidden = false;
+  const card = el('div', 'result');
+  card.append(el('h3', '', '✅ 신청이 완료되었습니다'), el('div', 'no', r.id),
+    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['신청일시', r.at]]),
+    el('p', 'note', '접수번호는 캡처해 두시면 좋아요. 12월 2일(수) 09:30부터 접수합니다.'));
+  box.append(card);
+  $('#applyForm').hidden = true;
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* ===== 조회 · 취소 ===== */
+let lastQuery = null;
+async function doLookup(name, phone) {
+  const msg = $('#lMsg'), list = $('#lList');
+  msg.textContent = ''; list.innerHTML = '';
+  const btn = $('#lSubmit'); btn.disabled = true; btn.textContent = '조회 중...';
+  const r = await api({ action: 'lookup', name, phone });
+  btn.disabled = false; btn.textContent = '조회하기';
+  if (!r.ok) { msg.textContent = r.message || '조회에 실패했습니다.'; return; }
+  if (!r.items.length) { msg.textContent = '일치하는 신청 내역이 없습니다. 이름과 연락처를 확인해 주세요.'; return; }
+  lastQuery = { name, phone };
+  r.items.forEach(it => {
+    const card = el('div', 'item');
+    const top = el('div', 'top');
+    top.append(el('span', 'no', it.id), el('span', 'pill ' + (it.status === '신청' ? 'ok' : 'x'), it.status === '신청' ? '신청 완료' : '취소됨'));
+    card.append(top);
+    card.append(el('p', '', it.org + ' · ' + it.position));
+    card.append(el('p', '', '신청일시 ' + it.at + (it.cancelAt ? ' / 취소일시 ' + it.cancelAt : '')));
+    if (it.status === '신청' && r.canCancel) {
+      const b = el('button', 'btn small danger', '신청 취소');
+      b.type = 'button';
+      b.addEventListener('click', async () => {
+        if (!confirm('접수번호 ' + it.id + ' 신청을 취소할까요?')) return;
+        b.disabled = true;
+        const c = await api({ action: 'cancel', id: it.id, name, phone });
+        if (c.ok) { toast('신청이 취소되었습니다'); doLookup(name, phone); }
+        else { b.disabled = false; alert(c.message || '취소에 실패했습니다.'); }
+      });
+      card.append(b);
+    }
+    list.append(card);
+  });
+}
+$('#lookupForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#lName').value.trim(), phone = $('#lPhone').value;
+  if (!name || !/^0\d{8,10}$/.test(phone.replace(/\D/g, ''))) { $('#lMsg').textContent = '이름과 연락처를 정확히 입력해 주세요.'; return; }
+  doLookup(name, phone);
+});
+
+/* ===== 캘린더(.ics) / 공유 ===== */
+$('#btnIcs').addEventListener('click', () => {
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//busancp//UP//KO', 'BEGIN:VEVENT',
+    'UID:up-2026-12-02@busancp', 'DTSTAMP:20261111T000000Z',
+    'DTSTART:20261202T010000Z', 'DTEND:20261202T030000Z',
+    'SUMMARY:부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회',
+    'DESCRIPTION:장애인 특성에 맞는 통합돌봄 도입 방안 / 문의 051-333-3888 (부산뇌병변복지관)',
+    CONFIG.VENUE ? 'LOCATION:' + CONFIG.VENUE : '', 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+  a.download = '성과보고회_2026-12-02.ics';
+  document.body.append(a); a.click(); a.remove();
+});
+$('#btnShare').addEventListener('click', async () => {
+  const data = { title: document.title, text: '2026.12.02.(수) 10:00 성과보고회 — 참가 신청 11/11~11/25', url: location.href };
+  if (navigator.share) { try { await navigator.share(data); } catch (e) {} }
+  else { try { await navigator.clipboard.writeText(location.href); toast('링크가 복사되었습니다'); } catch (e) { toast('주소창의 링크를 복사해 주세요'); } }
+});
+
+/* ===== 하단 고정 신청 버튼 (신청 영역이 안 보일 때만) ===== */
+const fl = $('#floatCta');
+function floatToggle() {
+  const r = $('#apply').getBoundingClientRect();
+  const inView = r.top < innerHeight * 0.8 && r.bottom > 0;
+  fl.style.display = (periodState() === 'open' && !inView && scrollY > 300) ? 'block' : 'none';
+}
+addEventListener('scroll', floatToggle, { passive: true }); floatToggle();
+</script>
+</body>
+</html>
