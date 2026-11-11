@@ -138,7 +138,6 @@ footer b{color:#fff}
     </div>
     <div class="cta">
       <a class="btn primary" href="#apply">참가 신청하기</a>
-      <button class="btn ghost" id="btnIcs" type="button">📅 캘린더에 담기</button>
       <button class="btn ghost" id="btnShare" type="button">🔗 공유하기</button>
     </div>
   </div>
@@ -431,19 +430,7 @@ $('#lookupForm').addEventListener('submit', e => {
   doLookup(name, phone);
 });
 
-/* ===== 캘린더(.ics) / 공유 ===== */
-$('#btnIcs').addEventListener('click', () => {
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//busancp//UP//KO', 'BEGIN:VEVENT',
-    'UID:up-2026-12-02@busancp', 'DTSTAMP:20261111T000000Z',
-    'DTSTART:20261202T010000Z', 'DTEND:20261202T030000Z',
-    'SUMMARY:부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회',
-    'DESCRIPTION:장애인 특성에 맞는 통합돌봄 도입 방안 / 문의 051-333-3888 (부산뇌병변복지관)',
-    CONFIG.VENUE ? 'LOCATION:' + CONFIG.VENUE : '', 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
-  a.download = '성과보고회_2026-12-02.ics';
-  document.body.append(a); a.click(); a.remove();
-});
+/* ===== 공유 ===== */
 $('#btnShare').addEventListener('click', async () => {
   const data = { title: document.title, text: '2026.12.02.(수) 10:00 성과보고회 — 참가 신청 11/11~11/25', url: location.href };
   if (navigator.share) { try { await navigator.share(data); } catch (e) {} }
