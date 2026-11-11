@@ -382,9 +382,8 @@ $('#applyForm').addEventListener('submit', async e => {
   if (!r.ok) { msg.textContent = r.message || '신청에 실패했습니다.'; return; }
   const box = $('#aResult'); box.innerHTML = ''; box.hidden = false;
   const card = el('div', 'result');
-  card.append(el('h3', '', '✅ 신청이 완료되었습니다'), el('div', 'no', r.id),
-    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['신청일시', r.at]]),
-    el('p', 'note', '접수번호는 캡처해 두시면 좋아요. 12월 2일(수) 09:30부터 접수합니다.'));
+  card.append(el('h3', '', '✅ 신청이 완료되었습니다'),
+    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['신청일시', r.at]]));
   box.append(card);
   $('#applyForm').hidden = true;
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -404,7 +403,7 @@ async function doLookup(name, phone) {
   r.items.forEach(it => {
     const card = el('div', 'item');
     const top = el('div', 'top');
-    top.append(el('span', 'no', it.id), el('span', 'pill ' + (it.status === '신청' ? 'ok' : 'x'), it.status === '신청' ? '신청 완료' : '취소됨'));
+    top.append(el('span', 'no', it.name), el('span', 'pill ' + (it.status === '신청' ? 'ok' : 'x'), it.status === '신청' ? '신청 완료' : '취소됨'));
     card.append(top);
     card.append(el('p', '', it.org + ' · ' + it.position));
     card.append(el('p', '', '신청일시 ' + it.at + (it.cancelAt ? ' / 취소일시 ' + it.cancelAt : '')));
@@ -412,7 +411,7 @@ async function doLookup(name, phone) {
       const b = el('button', 'btn small danger', '신청 취소');
       b.type = 'button';
       b.addEventListener('click', async () => {
-        if (!confirm('접수번호 ' + it.id + ' 신청을 취소할까요?')) return;
+        if (!confirm(it.name + '님의 신청을 취소할까요?')) return;
         b.disabled = true;
         const c = await api({ action: 'cancel', id: it.id, name, phone });
         if (c.ok) { toast('신청이 취소되었습니다'); doLookup(name, phone); }
