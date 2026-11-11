@@ -69,7 +69,11 @@ h2 + .lead{color:var(--muted);margin-bottom:22px;font-size:15px}
 .tl .t em{display:block;font-style:normal;color:#fff;background:var(--navy);border-radius:6px;padding:0 8px;font-size:12px;width:max-content;margin-bottom:3px}
 .tl h3{font-size:16px;font-weight:700;color:var(--navy)}
 .tl ul{list-style:none;margin-top:6px;font-size:14px;color:var(--muted)}
-.tl ul li{display:block;padding:3px 0;border:0}
+.tl ul li{display:block;padding:5px 0;border:0}
+.tl h3 + h3,.tl ul + h3{margin-top:12px}
+.tl .pt{display:block;color:var(--ink);font-weight:700}
+.tl .nm{display:block;color:var(--muted);font-weight:400}
+.tl ul:not(.sub) .nm{padding-left:1.3em}
 .tl ul li b{color:var(--ink);font-weight:600}
 .tl ul.sub li{padding-left:12px;position:relative}
 .tl ul.sub li::before{content:'·';position:absolute;left:2px}
@@ -174,28 +178,30 @@ footer b{color:#fff}
       <li><div class="t">10:00–10:10</div><div><h3>개회 및 참석자 소개</h3></div></li>
       <li><div class="t">10:10–10:15</div><div>
         <h3>사업기관 대표 인사</h3>
-        <ul><li><b>이주은 관장</b> (부산뇌병변복지관)</li><li>컨소시엄 기관 소개 · 축사</li></ul></div></li>
+        <ul><li><b>이주은 관장</b> (부산뇌병변복지관)</li></ul>
+        <h3>컨소시엄 기관 소개</h3>
+        <h3>축사</h3></div></li>
       <li><div class="t"><em>1부</em>10:15–11:10</div><div>
         <h3>고령장애인통합돌봄 컨소시엄 성과보고</h3>
         <ul>
-          <li>1. 부산형 고령장애인 통합돌봄 종합 성과보고 / <b>강은주 사무국장</b> (부산뇌병변복지관)</li>
-          <li>2. 고령장애인 통합돌봄 권역별 특성화 모델 사례</li>
+          <li><span class="pt">1. 부산형 고령장애인 통합돌봄 종합 성과보고</span><span class="nm">강은주 사무국장 (부산뇌병변복지관)</span></li>
+          <li><span class="pt">2. 고령장애인 통합돌봄 권역별 특성화 모델 사례</span></li>
         </ul>
         <ul class="sub">
-          <li>고령 뇌병변장애인 통합돌봄 사례 / <b>이동은 과장</b> (부산뇌병변복지관)</li>
-          <li>8050세대 고령장애인 통합돌봄 사례 / <b>박선애 팀장</b> (동구장애인복지관)</li>
-          <li>삼중고세대 고령장애인 통합돌봄 사례 / <b>장한나 사회복지사</b> (영도구장애인복지관)</li>
-          <li>무연고·독거 고령장애인 통합돌봄 사례 / <b>윤초롱 팀장</b> (해운대장애인복지관)</li>
-          <li>고령장애인 통합돌봄 의료영역 사례 / <b>박민정 간호사</b> (부산지역장애인보건의료센터)</li>
+          <li><span class="pt">고령 뇌병변장애인 통합돌봄 사례</span><span class="nm">이동은 과장 (부산뇌병변복지관)</span></li>
+          <li><span class="pt">8050세대 고령장애인 통합돌봄 사례</span><span class="nm">박선애 팀장 (동구장애인복지관)</span></li>
+          <li><span class="pt">삼중고세대 고령장애인 통합돌봄 사례</span><span class="nm">장한나 사회복지사 (영도구장애인복지관)</span></li>
+          <li><span class="pt">무연고·독거 고령장애인 통합돌봄 사례</span><span class="nm">윤초롱 팀장 (해운대장애인복지관)</span></li>
+          <li><span class="pt">고령장애인 통합돌봄 의료영역 사례</span><span class="nm">박민정 간호사 (부산광역시지역장애인보건의료센터)</span></li>
         </ul></div></li>
-      <li><div class="t"><em>2부</em>11:10–11:40</div><div>
+      <li><div class="t"><em>2부</em>11:10–11:50</div><div>
         <h3>부산시의 고령장애인통합돌봄 정책 방향성 제시</h3>
         <ul>
-          <li>1. 고령장애인 특화서비스 제안 및 부산형 통합돌봄 모델 / <b>윤성호 원장</b> (행림복지연구원)</li>
-          <li>2. 부산시 고령장애인 통합돌봄 정책 방향 / <b>손가연 사회복지보좌관</b> (부산광역시)</li>
-          <li>3. 부산 고령장애인 통합돌봄 정책 제안 / <b>손지현 원장</b> (부산광역시사회서비스원)</li>
+          <li><span class="pt">1. 고령장애인 특화서비스 제안 및 부산형 통합돌봄 모델</span><span class="nm">윤성호 원장 (행림복지연구원)</span></li>
+          <li><span class="pt">2. 부산시 고령장애인 통합돌봄 정책 방향</span><span class="nm">손가연 사회복지보좌관 (부산광역시)</span></li>
+          <li><span class="pt">3. 부산 고령장애인 통합돌봄 정책 제안</span><span class="nm">손지현 원장 (부산광역시사회서비스원)</span></li>
         </ul></div></li>
-      <li><div class="t">11:40–12:00</div><div><h3>질의 응답 및 마무리</h3></div></li>
+      <li><div class="t">11:50–12:00</div><div><h3>질의 응답 및 마무리</h3></div></li>
     </ol>
   </div>
 </section>
@@ -232,9 +238,9 @@ footer b{color:#fff}
         <input type="text" id="aName" maxlength="20" autocomplete="name" placeholder="홍길동">
         <label for="aPhone">연락처 <i>*</i></label>
         <input type="tel" id="aPhone" inputmode="numeric" maxlength="13" autocomplete="tel" placeholder="010-0000-0000">
-        <label for="aOrg">소속 기관 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <label for="aOrg">소속 기관</label>
         <input type="text" id="aOrg" maxlength="40">
-        <label for="aPos">직책 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <label for="aPos">직책</label>
         <input type="text" id="aPos" maxlength="30">
         <label for="aSupport">편의 지원 요청사항 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
         <textarea id="aSupport" maxlength="100" rows="2" placeholder="예) 수어통역"></textarea>
