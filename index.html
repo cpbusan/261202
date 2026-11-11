@@ -75,6 +75,14 @@ h2 + .lead{color:var(--muted);margin-bottom:22px;font-size:15px}
 .tl ul.sub li{padding-left:12px;position:relative}
 .tl ul.sub li::before{content:'·';position:absolute;left:2px}
 
+/* WAY */
+.way{background:#f3f6ff;border:1px solid var(--line);border-radius:18px;padding:20px;word-break:keep-all}
+.way .place{font-size:17px;font-weight:700;color:var(--navy)}
+.way .place b{color:var(--blue);margin-right:8px;font-size:14px}
+.way ul{list-style:none;margin:12px 0 16px;font-size:14px;color:var(--muted)}
+.way li{padding:3px 0 3px 14px;position:relative}
+.way li::before{content:'*';position:absolute;left:0}
+
 /* FORM */
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:#e5ecf8;border-radius:14px;padding:4px;margin-bottom:18px}
 .tabs button{appearance:none;border:0;background:transparent;font:inherit;font-weight:700;padding:11px;border-radius:11px;color:var(--muted);cursor:pointer}
@@ -192,6 +200,21 @@ footer b{color:#fff}
   </div>
 </section>
 
+<section id="way">
+  <div class="wrap">
+    <h2>오시는 길</h2>
+    <p class="lead">행사 당일 주차가 어렵습니다. 대중교통을 이용해 주세요.</p>
+    <div class="way">
+      <p class="place"><b>장소</b>부산사회복지종합센터 2층 대강당</p>
+      <ul>
+        <li>센터 내 외부차량 주차가 불가하여 대중교통을 이용해주시기 바랍니다.</li>
+        <li>주차가 필요하신 분은 센터 인근 '투루파킹 동해선동래역 주차장'(부산 동래구 낙민로 27)을 이용부탁드립니다. (주차비 개인부담)</li>
+      </ul>
+      <a class="btn blue small" href="https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%EC%A2%85%ED%95%A9%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">🗺️ 네이버 지도에서 보기</a>
+    </div>
+  </div>
+</section>
+
 <section id="apply" style="background:#fff">
   <div class="wrap">
     <h2>참가 신청</h2>
@@ -274,7 +297,7 @@ const CONFIG = {
   APPLY_END: '2026-11-25T23:59:59+09:00',
   EVENT_START: '2026-12-02T10:00:00+09:00',
   EVENT_END: '2026-12-02T12:00:00+09:00',
-  VENUE: '' // 장소가 정해지면 입력 (예: '부산시민회관 대극장'). 비워두면 표시 안 됨
+  VENUE: '부산사회복지종합센터 2층 대강당' // 비워두면 장소 표시 안 됨
 };
 
 const $ = s => document.querySelector(s);
