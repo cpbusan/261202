@@ -105,7 +105,7 @@ input:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3
 .result{background:#fff;border:2px solid var(--ok);border-radius:18px;padding:22px;text-align:center}
 .result .no{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:.04em}
 .result h3{color:var(--ok);margin-bottom:6px}
-.result dl{margin:14px 0;text-align:left;display:grid;grid-template-columns:80px 1fr;gap:4px 10px;font-size:15px}
+.result dl{margin:14px 0;text-align:left;display:grid;grid-template-columns:110px 1fr;gap:4px 10px;font-size:15px}
 .result dt{color:var(--muted)}
 .item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:12px}
 .item .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
@@ -247,10 +247,12 @@ footer b{color:#fff}
         <input type="text" id="aOrg" maxlength="40">
         <label for="aPos">직책</label>
         <input type="text" id="aPos" maxlength="30">
-        <label for="aSupport">편의 지원 요청사항 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+        <label for="aQuestion">사전질문</label>
+        <textarea id="aQuestion" maxlength="300" rows="3"></textarea>
+        <label for="aSupport">편의 지원 요청 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
         <textarea id="aSupport" maxlength="100" rows="2" placeholder="예) 수어통역"></textarea>
         <div class="agree">
-          입력하신 정보(이름·연락처·소속·직책·편의 지원 요청사항)는 <b>행사 참석 확인 및 안내 목적으로만</b> 사용되며, 행사 종료 후 파기됩니다.
+          입력하신 정보(이름·연락처·소속·직책·사전질문·편의 지원 요청)는 <b>행사 참석 확인 및 안내 목적으로만</b> 사용되며, 행사 종료 후 파기됩니다.
           <label><input type="checkbox" id="aAgree"> 개인정보 수집·이용에 동의합니다.</label>
         </div>
         <button class="btn blue" id="aSubmit" type="submit">신청하기</button>
@@ -425,7 +427,7 @@ function toast(t) {
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
   const msg = $('#aMsg'); msg.textContent = '';
-  const data = { action: 'apply', name: $('#aName').value.trim(), phone: $('#aPhone').value, org: $('#aOrg').value.trim(), position: $('#aPos').value.trim(), support: $('#aSupport').value.trim() };
+  const data = { action: 'apply', name: $('#aName').value.trim(), phone: $('#aPhone').value, org: $('#aOrg').value.trim(), position: $('#aPos').value.trim(), question: $('#aQuestion').value.trim(), support: $('#aSupport').value.trim() };
   if (!data.name) { msg.textContent = '이름을 입력해 주세요.'; return; }
   if (!/^0\d{8,10}$/.test(data.phone.replace(/\D/g, ''))) { msg.textContent = '연락처를 정확히 입력해 주세요.'; return; }
   if (!$('#aAgree').checked) { msg.textContent = '개인정보 수집·이용에 동의해 주세요.'; return; }
@@ -436,7 +438,7 @@ $('#applyForm').addEventListener('submit', async e => {
   const box = $('#aResult'); box.innerHTML = ''; box.hidden = false;
   const card = el('div', 'result');
   card.append(el('h3', '', '✅ 신청이 완료되었습니다'),
-    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['편의 지원', r.support], ['신청일시', r.at]].filter(x => x[1])));
+    dl([['이름', r.name], ['연락처', r.phone], ['소속', r.org], ['직책', r.position], ['사전질문', r.question], ['편의 지원 요청', r.support], ['신청일시', r.at]].filter(x => x[1])));
   box.append(card);
   $('#applyForm').hidden = true;
   box.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -460,6 +462,7 @@ async function doLookup(name, phone) {
     card.append(top);
     const op = [it.org, it.position].filter(Boolean).join(' · ');
     if (op) card.append(el('p', '', op));
+    if (it.question) card.append(el('p', '', '사전질문: ' + it.question));
     if (it.support) card.append(el('p', '', '편의 지원 요청: ' + it.support));
     card.append(el('p', '', '신청일시 ' + it.at + (it.cancelAt ? ' / 취소일시 ' + it.cancelAt : '')));
     if (it.status === '신청' && r.canCancel) {
