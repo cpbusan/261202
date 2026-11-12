@@ -114,6 +114,11 @@ input:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3
 .pill.ok{background:#e6f6ef;color:var(--ok)}.pill.x{background:#eee;color:#777}
 .item p{font-size:14px;color:var(--muted)}
 .item .btn{margin-top:10px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.item .acts .btn{margin-top:0}
+.btn.outline{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+.editbox{margin-top:12px;padding-top:4px;border-top:1px dashed var(--line)}
+.editbox .acts{margin-top:12px}
 .note{font-size:13px;color:var(--muted);margin-top:12px}
 
 /* ORGS */
@@ -273,7 +278,7 @@ footer b{color:#fff}
         <div class="msg err" id="lMsg"></div>
       </form>
       <div id="lList"></div>
-      <p class="note">※ 취소는 행사 시작 전까지 가능합니다. 변경이 필요하면 취소 후 다시 신청해 주세요.</p>
+      <p class="note"><span style="color:var(--err);font-weight:600">※ 사전질문·편의 지원 요청은 「내용 수정」으로, 신청은 「신청 취소」로 행사 시작 전까지 바꿀 수 있어요.</span><br>이름, 연락처, 소속기관, 직책을 바꾸려면 취소 후 다시 신청해 주세요.</p>
     </div>
   </div>
 </section>
@@ -466,6 +471,24 @@ async function doLookup(name, phone) {
     if (it.support) card.append(el('p', '', '편의 지원 요청: ' + it.support));
     card.append(el('p', '', '신청일시 ' + it.at + (it.cancelAt ? ' / 취소일시 ' + it.cancelAt : '')));
     if (it.status === '신청' && r.canCancel) {
+      const acts = el('div', 'acts');
+      const eb = el('button', 'btn small outline', '내용 수정');
+      eb.type = 'button';
+      const box = el('div', 'editbox'); box.hidden = true;
+      const q = el('textarea'); q.maxLength = 300; q.rows = 3; q.value = it.question || '';
+      const s = el('textarea'); s.maxLength = 100; s.rows = 2; s.value = it.support || '';
+      const save = el('button', 'btn small blue', '저장'); save.type = 'button'; save.style.width = 'auto';
+      const close = el('button', 'btn small outline', '닫기'); close.type = 'button';
+      const ba = el('div', 'acts'); ba.append(save, close);
+      box.append(el('label', '', '사전질문'), q, el('label', '', '편의 지원 요청'), s, ba);
+      eb.addEventListener('click', () => { box.hidden = !box.hidden; });
+      close.addEventListener('click', () => { box.hidden = true; });
+      save.addEventListener('click', async () => {
+        save.disabled = true; save.textContent = '저장 중...';
+        const u = await api({ action: 'update', name, phone, question: q.value.trim(), support: s.value.trim() });
+        if (u.ok) { toast('수정되었습니다'); doLookup(name, phone); }
+        else { save.disabled = false; save.textContent = '저장'; alert(u.message || '수정에 실패했습니다.'); }
+      });
       const b = el('button', 'btn small danger', '신청 취소');
       b.type = 'button';
       b.addEventListener('click', async () => {
@@ -475,7 +498,8 @@ async function doLookup(name, phone) {
         if (c.ok) { toast('신청이 취소되었습니다'); doLookup(name, phone); }
         else { b.disabled = false; alert(c.message || '취소에 실패했습니다.'); }
       });
-      card.append(b);
+      acts.append(eb, b);
+      card.append(acts, box);
     }
     list.append(card);
   });
