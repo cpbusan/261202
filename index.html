@@ -466,7 +466,7 @@ async function doLookup(name, phone) {
       b.addEventListener('click', async () => {
         if (!confirm(it.name + '님의 신청을 취소할까요?')) return;
         b.disabled = true;
-        const c = await api({ action: 'cancel', id: it.id, name, phone });
+        const c = await api({ action: 'cancel', name, phone });
         if (c.ok) { toast('신청이 취소되었습니다'); doLookup(name, phone); }
         else { b.disabled = false; alert(c.message || '취소에 실패했습니다.'); }
       });
