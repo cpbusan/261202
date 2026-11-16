@@ -159,7 +159,7 @@ footer b{color:#fff}
     </div>
     <div class="cta">
       <a class="btn primary" href="#apply">참가 신청하기</a>
-      <a class="btn ghost" href="261202.pdf" download="261202 부산형 고령장애인통합돌봄모델 성과보고회.pdf">📄 공문 다운로드</a>
+      <a class="btn ghost" id="btnDl" href="261202.pdf" download="261202 부산형 고령장애인통합돌봄모델 성과보고회.pdf">📄 공문 다운로드</a>
       <button class="btn ghost" id="btnShare" type="button">🔗 공유하기</button>
     </div>
   </div>
@@ -510,6 +510,14 @@ $('#lookupForm').addEventListener('submit', e => {
   const name = $('#lName').value.trim(), phone = $('#lPhone').value;
   if (!name || !/^0\d{8,10}$/.test(phone.replace(/\D/g, ''))) { $('#lMsg').textContent = '이름과 연락처를 정확히 입력해 주세요.'; return; }
   doLookup(name, phone);
+});
+
+/* ===== 공문 다운로드 횟수 기록 (다운로드 자체는 그대로 진행) ===== */
+$('#btnDl').addEventListener('click', () => {
+  if (!CONFIG.GAS_URL) return;
+  try {
+    fetch(CONFIG.GAS_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'download' }), keepalive: true }).catch(() => {});
+  } catch (e) {}
 });
 
 /* ===== 공유 ===== */
