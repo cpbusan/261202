@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회</title>
-<meta name="description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 11/11~11/25">
+<meta name="description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 접수 중">
 <meta property="og:title" content="부산형 고령장애인통합돌봄모델 정책 제안을 위한 성과보고회">
-<meta property="og:description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 11/11~11/25">
+<meta property="og:description" content="2026.12.02.(수) 10:00 · 장애인 특성에 맞는 통합돌봄 도입 방안 · 참가 신청 접수 중">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
@@ -51,6 +51,7 @@ a{color:inherit}
 /* SECTIONS */
 section{padding:44px 0}
 h2{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.01em}
+#apply h2{margin-bottom:18px}
 h2 + .lead{color:var(--muted);margin-bottom:22px;font-size:15px}
 .cards{display:grid;gap:12px;margin-top:-30px;position:relative;z-index:2}
 .card{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 6px 22px rgba(13,33,80,.09);border:1px solid var(--line)}
@@ -148,15 +149,6 @@ footer b{color:#fff}
     <p class="sub">고령장애인 맞춤형 통합돌봄 사례와 정책</p>
     <p class="date">2026.12.02.(수) 10:00</p>
     <p class="venue" id="heroVenue" hidden></p>
-    <div class="dday">
-      <div class="big"><small>접수 마감까지</small><span id="ddayText">D-?</span></div>
-      <div class="cd" id="cd">
-        <div><b id="cdD">0</b><span>일</span></div>
-        <div><b id="cdH">0</b><span>시간</span></div>
-        <div><b id="cdM">0</b><span>분</span></div>
-        <div><b id="cdS">0</b><span>초</span></div>
-      </div>
-    </div>
     <div class="cta">
       <a class="btn primary" href="#apply">참가 신청하기</a>
       <a class="btn ghost" id="btnDl" href="261202.pdf" download="261202 부산형 고령장애인통합돌봄모델 성과보고회.pdf">📄 공문 다운로드</a>
@@ -169,7 +161,6 @@ footer b{color:#fff}
   <div class="cards">
     <div class="card">
       <dl class="info">
-        <dt>신청기간</dt><dd>2026년 11월 11일(수) ~ 11월 25일(수)</dd>
         <dt>개최날짜</dt><dd>2026년 12월 02일(수) 오전 10:00 ~ 12:00</dd>
         <dt id="venueDt" hidden>장소</dt><dd id="venueDd" hidden></dd>
         <dt>자료·영상</dt><dd>성과보고회 후 <a href="https://www.youtube.com/@busancp" target="_blank" rel="noopener">부산뇌병변복지관 오뚜기TV</a>에 업로드 예정</dd>
@@ -236,7 +227,6 @@ footer b{color:#fff}
 <section id="apply" style="background:#fff">
   <div class="wrap">
     <h2>참가 신청</h2>
-    <p class="lead">신청 기간: 11월 11일(수) ~ 11월 25일(수)</p>
 
     <div class="tabs" role="tablist">
       <button type="button" class="on" data-tab="pApply">참가 신청</button>
@@ -314,7 +304,6 @@ const CONFIG = {
   // Apps Script 웹앱 배포 URL을 아래 따옴표 안에 붙여넣으세요 (…/exec 로 끝나는 주소)
   GAS_URL: 'https://script.google.com/macros/s/AKfycbygmW_-H1152yhSJ60xSvniYFN7dLkNttvSiaW5LEPd5A3A66bqK2C2EP01I0k7UD4UTw/exec',
   APPLY_START: '2026-11-11T00:00:00+09:00',
-  APPLY_END: '2026-11-25T23:59:59+09:00',
   EVENT_START: '2026-12-02T10:00:00+09:00',
   EVENT_END: '2026-12-02T12:00:00+09:00',
   VENUE: '부산사회복지종합센터 2층 대강당' // 비워두면 장소 표시 안 됨
@@ -348,39 +337,18 @@ if (CONFIG.VENUE) {
   $('#heroVenue').hidden = false; $('#heroVenue').textContent = '📍 ' + CONFIG.VENUE;
 }
 
-/* ===== D-day / 카운트다운 ===== */
-function tick() {
-  const now = Date.now();
-  const diff = T(CONFIG.APPLY_END) - now;
-  const k = new Date(now + 9 * 3600e3);
-  const today = Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate());
-  const evDay = Date.UTC(2026, 10, 25); // 접수 마감일(11/25)
-  const dd = Math.round((evDay - today) / 864e5);
-  $('#ddayText').textContent = diff <= 0 ? '마감' : dd > 0 ? 'D-' + dd : 'D-DAY';
-  if (diff <= 0) { ['D','H','M','S'].forEach(x => $('#cd'+x).textContent = '0'); return; }
-  $('#cdD').textContent = Math.floor(diff / 864e5);
-  $('#cdH').textContent = Math.floor(diff % 864e5 / 36e5);
-  $('#cdM').textContent = Math.floor(diff % 36e5 / 6e4);
-  $('#cdS').textContent = Math.floor(diff % 6e4 / 1e3);
-}
-tick(); setInterval(tick, 1000);
-
 /* ===== 신청 기간 상태 ===== */
 function periodState() {
-  const n = Date.now();
-  if (n < T(CONFIG.APPLY_START)) return 'before';
-  if (n > T(CONFIG.APPLY_END)) return 'closed';
-  return 'open';
+  return Date.now() < T(CONFIG.APPLY_START) ? 'before' : 'open'; // 마감 없음
 }
 function renderStatus() {
   const st = periodState();
   const box = $('#statusBox');
   box.className = 'status ' + st;
-  box.textContent = st === 'open' ? '✅ 지금 신청할 수 있어요'
-    : st === 'before' ? '⏳ 신청은 11월 11일부터 시작됩니다' : '🔒 신청이 마감되었습니다';
+  box.textContent = st === 'open' ? '✅ 지금 신청할 수 있어요' : '⏳ 신청은 11월 11일부터 시작됩니다';
   const btn = $('#aSubmit');
   btn.disabled = st !== 'open';
-  btn.textContent = st === 'open' ? '신청하기' : st === 'before' ? '신청 기간이 아닙니다' : '신청이 마감되었습니다';
+  btn.textContent = st === 'open' ? '신청하기' : '신청 기간이 아닙니다';
 }
 renderStatus(); setInterval(renderStatus, 30000);
 
@@ -523,7 +491,7 @@ $('#btnDl').addEventListener('click', () => {
 
 /* ===== 공유 ===== */
 $('#btnShare').addEventListener('click', async () => {
-  const data = { title: document.title, text: '2026.12.02.(수) 10:00 성과보고회 — 참가 신청 11/11~11/25', url: location.href };
+  const data = { title: document.title, text: '2026.12.02.(수) 10:00 성과보고회 — 참가 신청 접수 중', url: location.href };
   if (navigator.share) { try { await navigator.share(data); } catch (e) {} }
   else { try { await navigator.clipboard.writeText(location.href); toast('링크가 복사되었습니다'); } catch (e) { toast('주소창의 링크를 복사해 주세요'); } }
 });
